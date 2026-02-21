@@ -1,7 +1,9 @@
 import { useKanbanContext } from "../../context/KanbanContext";
+import { useTheme } from "../../hooks/useTheme";
 
 export function Header() {
     const { searchQuery, setSearchQuery, addColumn } = useKanbanContext();
+    const { isDarkMode, toggleTheme } = useTheme();
 
     const handleAddCategory = () => {
         const title = window.prompt("Nom de la catégorie:");
@@ -20,6 +22,49 @@ export function Header() {
             </div>
 
             <div className="flex items-center gap-6">
+                {/* Dark Mode Toggle Switch - Animated & Detailed */}
+                <button
+                    onClick={toggleTheme}
+                    className="relative inline-flex h-8 w-16 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent bg-slate-200 dark:bg-slate-700 transition-colors duration-300 ease-in-out hover:bg-slate-300 dark:hover:bg-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-opacity-75 shadow-inner overflow-hidden"
+                    role="switch"
+                    aria-checked={isDarkMode}
+                    title={isDarkMode ? "Passer au mode clair" : "Passer au mode sombre"}
+                >
+                    <span className="sr-only">Thème</span>
+
+                    {/* Left/Right Background Decals (Static) */}
+                    <span className="absolute inset-0 flex h-full w-full items-center justify-between px-1.5 pointer-events-none">
+                        <span className={`material-symbols-outlined text-[15px] transition-opacity duration-300 ${isDarkMode ? 'opacity-100 text-slate-400' : 'opacity-0'}`}>
+                            dark_mode
+                        </span>
+                        <span className={`material-symbols-outlined text-[15px] transition-opacity duration-300 ${!isDarkMode ? 'opacity-100 text-slate-400' : 'opacity-0'}`}>
+                            light_mode
+                        </span>
+                    </span>
+
+                    {/* Sliding Thumb and Rotating Icon */}
+                    <span
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute left-0 flex h-7 w-7 transform items-center justify-center rounded-full bg-white shadow-md ring-0 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isDarkMode ? 'translate-x-[32px]' : 'translate-x-0'
+                            }`}
+                    >
+                        {/* Sun Icon (rotates out when dark mode) */}
+                        <span
+                            className={`material-symbols-outlined text-[16px] absolute transition-all duration-500 text-amber-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDarkMode ? '-rotate-180 opacity-0 scale-50' : 'rotate-0 opacity-100 scale-100'
+                                }`}
+                        >
+                            light_mode
+                        </span>
+                        {/* Moon Icon (rotates in when dark mode) */}
+                        <span
+                            className={`material-symbols-outlined text-[16px] absolute transition-all duration-500 text-indigo-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${isDarkMode ? 'rotate-0 opacity-100 scale-100' : 'rotate-180 opacity-0 scale-50'
+                                }`}
+                        >
+                            dark_mode
+                        </span>
+                    </span>
+                </button>
+
                 <div className="hidden md:flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-2 w-64 border border-transparent focus-within:border-primary/50 transition-colors">
                     <span className="material-symbols-outlined text-slate-400 text-xl">search</span>
                     <input

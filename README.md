@@ -51,6 +51,7 @@ npm run preview # Pour prévisualiser la production localement
 
 ## ✨ Nouvelles Fonctionnalités & Mises à Jour
 
+- **(feat) Mode Sombre (Dark Mode)** : Implémentation complète d'un thème sombre avec bascule animée (switch UI) et persistance automatique des préférences utilisateur via le `localStorage` (+ détection du thème OS).
 - **(feat) Drag & Drop Fluide** : Réorganisation des tâches et des statuts à la volée avec des animations natives imperceptibles, sans freeze du DOM.
 - **(feat) Moteur de Recherche en Temps Réel** : Filtrez instantanément vos tâches par titre ou description via un état dérivé optimisé.
 - **(feat) Catégories Dynamiques** : Fini les statuts codés en dur ! Créez autant de colonnes (`Columns`) que vous le désirez.

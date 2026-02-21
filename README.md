@@ -1,4 +1,4 @@
-# Kanban App - Sprint 1.1
+# TaskFlow
 
 Bienvenue sur le projet de tableau Kanban ! Ce projet, construit sans backend traditionnel, redéfinit la gestion de tâches côté client via une architecture moderne, fluide et sécurisée.
 
